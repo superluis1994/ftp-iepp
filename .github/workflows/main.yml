@@ -18,5 +18,5 @@ jobs:
           server: ftp://ftpupload.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          server-dir: htdocs
+          protocol: ftps
+          server-dir: htdocs/
