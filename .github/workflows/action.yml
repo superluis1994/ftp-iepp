@@ -1,22 +1,22 @@
-name: FTP Test
+name: Deploy to FTP Server
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  deploy:
-    name: 🚀 Deploy website every commit
+  ftp-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: 📂 Sync files
-        uses: ./
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
-          server: ftpupload.net
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          server-dir: /htdocs/
+          ftp-server: ftp://ftpupload.net
+          ftp-username: ${{ secrets.FTP_USERNAME }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          git-ftp-args: --auto-init
