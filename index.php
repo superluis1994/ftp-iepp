@@ -1,3 +1,3 @@
 <?php
 
-echo "Se pudo subir 2025www2222ss2";
+echo "si se pudo";
